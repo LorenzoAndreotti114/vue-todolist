@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toboolist</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <img id="logo" src="img/logo.png" alt="logo boolean" />
+      <span id="logo-text">Tobooolist</span>
+    </header>
+    <main>
+      <div class="container">
+
+        <!-- TP -->
+        <div class="top">
+          <input type="text" placeholder="es: Fare la spesa..." id="elementInput" @keyup.enter="addElements" />
+          <button type="button" class="btn btn-filled" @click="addElements" >Add Task</button>
+        </div>
+
+        <!-- BOTTOM -->
+        <div class="tasks">
+
+          <!-- ELEMENT LIST -->
+          <ul class="inner-list">
+
+            <li v-for="(curElement, index) in todoElements" :class="curElement.done ? `done` : `` " @click="invertCheck(index)">
+              <span :class="curElement.done ? `circle checked` : `circle delete`">{{ curElement.text }}</span> 
+              
+              <button @click="deleteElement(index)">X</button>
+            </li>
+            
+          </ul>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+</body>
+
+<script src="./js/script.js"></script>
+
+</html>
